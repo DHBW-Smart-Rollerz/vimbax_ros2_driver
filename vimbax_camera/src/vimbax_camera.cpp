@@ -747,7 +747,7 @@ result<_Float64> VimbaXCamera::feature_float_get(
 
   _Float64 value{};
   auto const err =
-    api_->FeatureFloatGet(handle, name.data(), reinterpret_cast<_Float64 *>(&value));
+    api_->FeatureFloatGet(handle, name.data(), reinterpret_cast<double *>(&value));
 
   if (err != VmbErrorSuccess) {
     RCLCPP_ERROR(
@@ -765,7 +765,7 @@ VimbaXCamera::feature_float_set(
   const _Float64 value,
   const Module module) const
 {
-  RCLCPP_DEBUG(get_logger(), "%s('%s', %lf)", __FUNCTION__, name.data(), value);
+  RCLCPP_DEBUG(get_logger(), "%s('%s', %lf)", __FUNCTION__, name.data(), static_cast<double>(value));
 
   auto const handle = get_module_handle(module);
 
