@@ -25,24 +25,40 @@
 # CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
+import os
 
+from ament_index_python import get_package_share_directory
+from launch_ros.actions import Node
 
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    return LaunchDescription([
-        Node(
-            package='vimbax_camera',
-            namespace='vimbax_camera_test',
-            executable='vimbax_camera_node',
-            name='vimbax_camera_test',
-            parameters=[{
-                # "camera_id": "00:0f:31:00:0e:2f"
-                # "camera_id": "00:0F-31-00-0E-2F"
-                # "camera_id": "169.254.103.205"
-                # "camera_id": "DEV_000F31000E2F"
-            }]
-        )
-    ])
+    camera_settings_file = LaunchConfiguration("camera_settings_file")
+
+    return LaunchDescription(
+        [
+            DeclareLaunchArgument(
+                "camera_settings_file",
+                default_value=os.path.join(
+                    get_package_share_directory("vimbax_camera"),
+                    "config",
+                    "camera_settings.xml",
+                ),
+                description="Path to the camera settings file",
+            ),
+            Node(
+                package="vimbax_camera",
+                name="vimbax_camera",
+                executable="vimbax_camera_node",
+                remappings=[
+                    ("/vimbax_camera/image_raw", "/camera/image/raw"),
+                ],
+                parameters=[{"settings_file": camera_settings_file}],
+            ),
+        ]
+    )

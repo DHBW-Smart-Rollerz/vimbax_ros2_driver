@@ -354,7 +354,7 @@ bool VimbaXCameraNode::initialize_publisher()
   auto qos = rmw_qos_profile_default;
   qos.depth = 10;
 
-  camera_publisher_ = image_transport::create_camera_publisher(node_.get(), "image_raw", qos);
+  camera_publisher_ = image_transport::create_camera_publisher(node_.get(), "/vimbax_camera/image_raw", qos);
 
   if (!camera_publisher_) {
     return false;
