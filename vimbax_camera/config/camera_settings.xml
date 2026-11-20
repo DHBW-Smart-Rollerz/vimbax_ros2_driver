@@ -9,7 +9,7 @@
         <LocalDevice>
             <Feature Name="DeviceDisplayName" Value="Allied Vision 1800 U-319m" Type="String" />
             <Feature Name="DeviceID" Value="DEV_1AB22C0443C9" Type="String" />
-            <Feature Name="DeviceLocation" Value="//2/2" Type="String" />
+            <Feature Name="DeviceLocation" Value="//2/4" Type="String" />
             <Feature Name="DeviceModelName" Value="1800 U-319m" Type="String" />
             <Feature Name="DeviceType" Value="USB3" Type="Enum" />
             <Feature Name="DeviceVendorName" Value="Allied Vision" Type="String" />
@@ -256,7 +256,7 @@
             <Feature Name="DeviceTLVersionMinor" Value="1" Type="Int" />
             <SelectorGroup Name="DeviceTemperatureSelector" Type="Enum" Value="Sensor" />
             <SelectorGroup Name="DeviceTemperatureSelector" Type="Enum" Value="Mainboard">
-                <Feature Name="DeviceTemperature" Value="70.5" Type="Float" />
+                <Feature Name="DeviceTemperature" Value="42.5" Type="Float" />
             </SelectorGroup>
             <Feature Name="DeviceTemperatureSelector" Value="Mainboard" Type="Enum" />
             <Feature Name="DeviceTemperatureStatus" Value="OK" Type="Enum" />
@@ -264,11 +264,11 @@
             <Feature Name="DeviceVendorName" Value="Allied Vision" Type="String" />
             <Feature Name="DeviceVersion" Value="15120" Type="String" />
             <Feature Name="ExposureActiveMode" Value="FlashWindow" Type="Enum" />
-            <Feature Name="ExposureAuto" Value="Off" Type="Enum" />
+            <Feature Name="ExposureAuto" Value="Continuous" Type="Enum" />
             <Feature Name="ExposureAutoMax" Value="9000002" Type="Float" />
             <Feature Name="ExposureAutoMin" Value="25.212" Type="Float" />
             <Feature Name="ExposureMode" Value="Timed" Type="Enum" />
-            <Feature Name="ExposureTime" Value="9996.768" Type="Float" />
+            <Feature Name="ExposureTime" Value="15516.12" Type="Float" />
             <Feature Name="FileProcessStatus" Value="None" Type="Enum" />
             <SelectorGroup Name="FileSelector" Type="Enum" Value="Firmware">
                 <SelectorGroup Name="FileOperationSelector" Type="Enum" Value="Open">
@@ -869,7 +869,7 @@
                 <Feature Name="FileStatus" Value="Closed" Type="Enum" />
             </SelectorGroup>
             <Feature Name="FileSelector" Value="UserData" Type="Enum" />
-            <Feature Name="GainAuto" Value="Off" Type="Enum" />
+            <Feature Name="GainAuto" Value="Continuous" Type="Enum" />
             <Feature Name="GainAutoMax" Value="48" Type="Float" />
             <Feature Name="GainAutoMin" Value="0" Type="Float" />
             <SelectorGroup Name="GainSelector" Type="Enum" Value="All">
@@ -886,7 +886,7 @@
                 <Feature Name="IntensityControllerAlgorithm" Value="Mean" Type="Enum" />
             </SelectorGroup>
             <Feature Name="IntensityControllerSelector" Value="IntensityController1" Type="Enum" />
-            <Feature Name="IntensityControllerTarget" Value="56.342" Type="Float" />
+            <Feature Name="IntensityControllerTarget" Value="12.397" Type="Float" />
             <SelectorGroup Name="LUTSelector" Type="Enum" Value="Luminance">
                 <Feature Name="LUTIndex" Value="0" Type="Int" />
             </SelectorGroup>
@@ -5755,7 +5755,7 @@
                 <Feature Name="LineDebounceMode" Value="Off" Type="Enum" />
                 <Feature Name="LineDebounceDuration" Value="0.04040404" Type="Float" />
             </SelectorGroup>
-            <Feature Name="LineSelector" Value="Line3" Type="Enum" />
+            <Feature Name="LineSelector" Value="Line0" Type="Enum" />
             <Feature Name="LineStatusAll" Value="15" Type="Int" />
             <Feature Name="MultipleRegionArrangement" Value="Free" Type="Enum" />
             <Feature Name="MultipleRegionEnable" Value="0" Type="Bool" />
@@ -6616,6 +6616,16 @@
         </RemoteDevice>
     </CameraInfo>
     <Stream Id="DEV_1AB22C0443C9_DS_0x0" Index="0">
+        <SelectorGroup Name="EventSelector" Type="Enum" Value="Test">
+            <Feature Name="EventNotification" Value="Off" Type="Enum" />
+        </SelectorGroup>
+        <SelectorGroup Name="EventSelector" Type="Enum" Value="FrameLeaderReceived">
+            <Feature Name="EventNotification" Value="Off" Type="Enum" />
+        </SelectorGroup>
+        <SelectorGroup Name="EventSelector" Type="Enum" Value="FrameTrailerReceived">
+            <Feature Name="EventNotification" Value="Off" Type="Enum" />
+        </SelectorGroup>
+        <Feature Name="EventSelector" Value="Test" Type="Enum" />
         <Feature Name="MaxDriverBuffersCount" Value="64" Type="Int" />
         <Feature Name="StreamAcquisitionModeSelector" Value="Default" Type="Enum" />
         <Feature Name="StreamAnnounceBufferMinimum" Value="0" Type="Int" />
@@ -6627,5 +6637,6 @@
         <Feature Name="StreamPayloadSizeMode" Value="Auto" Type="Enum" />
         <Feature Name="StreamStopTimeout" Value="200" Type="Int" />
         <Feature Name="StreamType" Value="USB3" Type="Enum" />
+        <IgnoredFeature Name="TestEventGenerate" Type="Command" />
     </Stream>
 </ModuleSettings>
